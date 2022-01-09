@@ -1,4 +1,5 @@
 export default function UserInfo({user}) {
+    console.log(user);
     const {name, age, hairColor} = user || {};
     return(
         <>

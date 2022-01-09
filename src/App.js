@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import {SplitScreen} from "./SplitScreen";
-import { UncontrolledForm } from './constrolledcomponents/UncontroledForm';
-import {ControlledForm} from "./constrolledcomponents/ControlledForm";
+import { UncontrolledForm } from './controlledcomponents/UncontroledForm';
+import {ControlledForm} from "./controlledcomponents/ControlledForm";
 import {Modal} from "./layoutcomponents/Modal";
 import {CurrentUserLoader} from "./containercomponents/CurrentUserLoader";
 import UserInfo from "./components/UserInfo";
@@ -13,6 +13,8 @@ import {useState} from "react";
 import {ControlledModal} from "./controlledmodals/ControlledModal";
 import {UncontrolledOnboardingFlow} from "./onboardingflows/UncontrolledOnboardingFlow";
 import {Register} from "./onboardingflows/Register";
+import {printProps} from "./higherordercomponents/printProps";
+import {withUser} from "./higherordercomponents/withUser";
 const LeftHandComponent = ({name}) => {
   return <h1 style={{backgroundColor:"red"}}>{name}</h1>
 }
@@ -24,8 +26,6 @@ const RigthHandComponent = ({message}) => {
 const getLocalStorageData = key => {
     return localStorage.getItem(key);
 }
-
-
 
 function App() {
     const [shouldShowModal, setShouldShowModal] = useState();
@@ -51,8 +51,8 @@ function App() {
     //       {shouldShowModal ? 'Hide Modal' : 'Show Modal'}
     //   </button>
     // </>
+      <UserInfoWithLoader />
 
-      <Register />
   );
 }
 
