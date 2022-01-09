@@ -1,6 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import {SplitScreen} from "./SplitScreen";
+import { UncontrolledForm } from './constrolledcomponents/UncontroledForm';
+import {ControlledForm} from "./constrolledcomponents/ControlledForm";
+import {Modal} from "./layoutcomponents/Modal";
+import {CurrentUserLoader} from "./containercomponents/CurrentUserLoader";
+import UserInfo from "./components/UserInfo";
+import {ResourceLoader} from "./containercomponents/ResourceLoader";
 const LeftHandComponent = ({name}) => {
   return <h1 style={{backgroundColor:"red"}}>{name}</h1>
 }
@@ -10,10 +16,12 @@ const RigthHandComponent = ({message}) => {
 }
 function App() {
   return (
-    <SplitScreen leftWeight={1} rightWeight={3}>
-      <LeftHandComponent name={"Left"}/>
-      <RigthHandComponent message={"right"}/>
-    </SplitScreen>
+      // <CurrentUserLoader>
+      //     <UserInfo />
+      // </CurrentUserLoader>
+      <ResourceLoader resourceUrl="" resourceName="users">
+          <UserInfo />
+      </ResourceLoader>
   );
 }
 
